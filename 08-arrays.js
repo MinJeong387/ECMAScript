@@ -62,7 +62,11 @@ console.log(fruits.shift());    // Banana
 console.log(fruits.shift());    // Orange
 console.log(fruits);            // ['Mango', 'Kiwi']
 
-// splice
+
+
+console.log("****************************************************************");
+console.log("=================================== Splice");
+// Splice
 
 // 매개변수가 1개: 해당 인덱스부터 끝까지 추출 후 제거
 fruits = ["Apple", "Banana", "Orange", "Mango", "Kiwi"];
@@ -84,6 +88,7 @@ fruits = ["Apple", "Banana", "Orange", "Mango", "Kiwi"];
 console.log(fruits);
 console.log(fruits.splice(2, 1, "Guava", "Grape"));
 console.log(fruits);
+console.log("=================================================================");
 
 
 console.log("=================================== reverse");     // 순서 반전
@@ -96,11 +101,16 @@ console.log("원본:", fruits);
 let slices = fruits.slice(2, 5);
 console.log("SLICE:", slices);
 
-console.log("=================================== sort");        // 정렬
-console.log(fruits);
-// fruits.sort();                  // 기본은 오름차순
-// console.log("SORT:", fruits);
-/*
+console.log("=================================== sort1");        // 정렬1 (오름차순)
+fruits = ['Kiwi', 'Mango', 'Grape', 'Guava', 'Banana', 'Apple'];
+console.log("원본:", fruits);
+fruits.sort();                                                  // 기본은 오름차순
+console.log("SORT1:", fruits);
+
+
+console.log("=================================== sort2");        // 정렬2 (역순 = 내림차순)
+fruits = ['Kiwi', 'Mango', 'Grape', 'Guava', 'Banana', 'Apple'];
+console.log("원본:", fruits);
 fruits.sort((v1, v2) => {
     // 역순 정렬
     // 0이면 순서가 같다 (변경 없음)
@@ -110,15 +120,21 @@ fruits.sort((v1, v2) => {
     if (v1 > v2) return -1;
     if (v1 == v2) return 0;
 });
-*/
+console.log("SORT2:", fruits);
+
+
+console.log("=================================== sort3");        // 정렬3 (문자열 길이 순)
+fruits = ['Kiwi', 'Mango', 'Grape', 'Guava', 'Banana', 'Apple'];
+console.log("원본:", fruits);
 // 문자열 길이 순으로 정렬
 fruits.sort((v1, v2) => {
     return v1.length - v2.length;
 })
-console.log("SORT:", fruits);
+console.log("SORT3:", fruits);
 
-// split
+
 console.log("=================================== String::split");
+// split
 // 구분자를 기준으로 문자열 분할 -> 배열로 반환
 const str = "JavaScript is something strange than other languages";
 console.log(str);
@@ -126,4 +142,4 @@ let chunks = str.split(' ');    // 공백 문자를 기준으로 분리
 console.log(chunks);
 for (let i = 0; i < chunks.length; i++) {
     console.log(chunks[i]);
-}  
+}
