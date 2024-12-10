@@ -89,3 +89,9 @@ while (row > 0) {
     console.log(stars);
     row--;
 }
+
+// TODO : for ... in
+//      - 객체의 속성 key를 반복하는 루프
+
+// TODO : for ... of
+//      - 컬렉션 객체(배열)의 요소 순환
