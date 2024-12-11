@@ -25,16 +25,18 @@ console.log("ES6 combined:", combined);
 
 // 배열의 전개
 console.log("=================================================== 배열의 전개");
-console.log("arr1:", arr1);
 
 // let first = arr1[0];
 // let second = arr1[1];    -> 총 몇개의 요소가 있는지 모르므로, 적합한 방법은 아님
+console.log("arr1:", arr1);
 let [first, second, third = "empty", ...others] = arr1;
 console.log(first, second, third, others);
 
 console.log("combined:", combined);
 [first, second, third = "empty", ...others] = combined;       // ...others 라서 ['전우치'] 이렇게 나옴. 만약 others 였으면  전우치   그냥 이렇게 나옴
 console.log(first, second, third, others);
+
+
 
 
 
@@ -56,6 +58,8 @@ console.log("combined 1:", combined);
 // 방법2.
 combined = Object.assign({}, obj1, obj2);                      // {} 에다가 obj1 이랑 obj2 할당한다
 console.log("combined 2:", combined);
+
+
 
 
 
