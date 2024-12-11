@@ -8,7 +8,7 @@ class Shape {
 
     // 생성자 (객체가 생성될 때 자동으로 호출되는 메서드)
     constructor(x, y) {
-        this.name = "n";      // 인스턴스 속성 -> ES6 방식
+        this.name = "Shape";      // 인스턴스 속성 -> ES6 방식
         this.move(x, y);
     }
 
@@ -24,6 +24,7 @@ class Shape {
 // 인스턴스 생성
 const s = new Shape(10, 20);
 console.log(s, s.area());
+
 
 
 
