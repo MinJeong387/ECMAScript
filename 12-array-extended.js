@@ -21,25 +21,26 @@ function testForEach() {
 // testForEach();
 
 function testEverySome() {
-    const data = [
+    const data = [                                        // 객체의 배열
         { name: "홍길동", age: 28 },
         { name: "장길산", age: 35 },
         { name: "전우치", age: 25 }
-    ];      // 객체의 배열
+    ];     
 
     console.log("원본 데이터:", data);
 
     // 모든 객체의 age가 25세 초과하는지 검증
-    let result = data.every(obj => obj.age > 25);        // 검증 로직
-    console.log("모든 인물의 나이가 25세 초과?", result);
+    let result = data.every(obj => obj.age > 25);         // 검증 로직
+    console.log("모든 인물의 나이가 25세 초과?", result);   // every : 조건 만족시 true
 
     // 일부 객체의 age가 25세 초과하는지 검증
     result = data.some(obj => {
         return obj.age > 25;
     })
-    console.log("일부 인물의 나이가 25세 초과?", result);
+    console.log("일부 인물의 나이가 25세 초과?", result);   // some : 조건 만족시 true
 }
 // testEverySome();
+
 
 
 
@@ -61,11 +62,17 @@ function testMap() {
     }
     console.log("기존 방식: 원본*2:", multiply);
 
-    // MAP 방식의 구현
+    // MAP 방식의 구현 
     multiply = numbers.map(item => item * 2);
     console.log("MAP: 원본*2:", multiply);
 }
 // testMap();
+
+
+
+
+
+
 
 function testFilter() {
     console.log("================================================ filter");
@@ -76,9 +83,7 @@ function testFilter() {
     let result = numbers.filter(item => item % 2 == 0);
     console.log("원본 데이터:", numbers);
     console.log("짝수 데이터:", result);
-    console.log("3의 배수:",
-        numbers.filter(item => item % 3 == 0)
-    );
+    console.log("3의 배수:", numbers.filter(item => item % 3 == 0));
 }
 // testFilter();
 
