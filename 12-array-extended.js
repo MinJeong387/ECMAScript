@@ -211,5 +211,5 @@ console.log(
         }))
         .filter(student => student.total >= 240)
         .sort((a, b) => b.total - a.total)
-        .reduce((acc, student) => acc + student.total,0) / 3
-    );
+        .reduce((acc, student) => acc + student.total, 0) / 3
+);
