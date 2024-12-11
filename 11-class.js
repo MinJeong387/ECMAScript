@@ -6,9 +6,9 @@ class Shape {
 
     name = "Shape";               // -> ES7 확장 표현
 
-    // 생성자
+    // 생성자 (객체가 생성될 때 자동으로 호출되는 메서드)
     constructor(x, y) {
-        this.name = "Shape";      // 인스턴스 속성 -> ES6 방식
+        this.name = "n";      // 인스턴스 속성 -> ES6 방식
         this.move(x, y);
     }
 
@@ -17,15 +17,17 @@ class Shape {
         this.x = x;
         this.y = y;
     }
-
     area() {
         return 0;
     }
 }
-
 // 인스턴스 생성
 const s = new Shape(10, 20);
 console.log(s, s.area());
+
+
+
+
 
 // 상속
 // Shape로부터 move 메서드, x, y, name 속성 등을 상속
