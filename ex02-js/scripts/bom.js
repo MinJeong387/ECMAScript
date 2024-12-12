@@ -14,4 +14,3 @@ let newWin;
             let message = `현재 윈도우 창의 크기는  ${window.innerWidth} x ${window.innerHeight} 입니다.`;
             alert(message);
         }
-        
