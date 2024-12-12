@@ -114,6 +114,9 @@ function testReduce() {
 
 
 
+
+
+
 function testReduce2() {
     // 반복되는 모든 것에는 reduce 함수를 적용할 수 있음
     // map함수를 reduce 함수로 구현
@@ -131,6 +134,8 @@ function testReduce2() {
     console.log("요소 두배:", result);
 }
 // testReduce2();
+
+
 
 
 
@@ -205,7 +210,7 @@ function testDataPipeline() {
 
     console.log("총점 240 이상인 학생들의 평균:", avgTotalSum);
 }
-// testDataPipeline();
+testDataPipeline();
 
 
 
