@@ -20,6 +20,8 @@ function timerTest() {
 // timerTest();
 
 
+
+
 function intervalTest() {
     // interval : 특정 시간 간격으로 호출되는 함수
     let count = 10;
@@ -34,7 +36,7 @@ function intervalTest() {
             clearInterval(intervalId);
         }
     }, 1000);
-    
+
     console.log("End of Function");
 }
-intervalTest();
+// intervalTest();
