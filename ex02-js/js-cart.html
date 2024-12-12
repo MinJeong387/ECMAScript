@@ -1,31 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-        <title>JS Cart</title>
-        <style>
-            #list li {
-                height: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="header">
-            <h1>Shopping List</h1>
-        </div>
-        <div id="cart-list">
-            <ul id="list">
-                <li>무</li>
-                <li>배추</li>
-                <li>쪽파</li>
-                <li>고춧가루</li>
-            </ul>
-        </div>
-        <div id="cart-input">
-            <input id="item"><button id="btn-add">추가</button>
-        </div>
-        <div id="footer">
-            &copy;Bit Academy
-        </div>
-    </body>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>JS Cart</title>
+    <style>
+        div {
+            margin: 5px;
+            border: 1px dotted red;
+        }
+
+        #list li {
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Shopping List</h1>
+    </div>
+    <div id="cart-list">
+        <ul id="list">
+            <li>무</li>
+            <li>배추</li>
+            <li>쪽파</li>
+            <li>고춧가루</li>
+        </ul>
+    </div>
+    <div id="cart-input">
+        <input id="item"><button id="btn-add">추가</button>
+    </div>
+    <div id="footer">
+        &copy;Bit Academy
+    </div>
+</body>
+
+<script>
+    function addItem(event) {
+        // input#item의 value를 확인해서 trim -> length > 0 이면 -> 추가
+        let itemInput = document.getElementById("item");
+        let item = itemInput.value.trim();
+
+        if (item.length > 0) {
+            // ul#list 에다가 li 만들어서 추가
+            let container = document.getElementById("list");
+            // li 노드 생성
+            let itemNode = document.createElement("li");
+            itemNode.innerText = item;
+
+            // toolbar 생성
+            let toolbar = document.createElement("div");
+            toolbar.style.display = "inline";
+
+            // delBtn 생성
+            let delBtn = document.createElement("button");      
+            delBtn.innerText = "삭제";
+            delBtn.style.cssFloat = "right";
+
+            // toolbar에 delBtn 넣기
+            toolbar.appendChild(delBtn);
+            itemNode.appendChild(toolbar);
+            container.appendChild(itemNode);
+
+            delBtn.addEventListener("click", event => {
+                // 삭제될 노드 찾기
+                let removeItem = event.target.parentNode.parentNode;
+                // 삭제할(부모) 노드 찾기
+                let parentNode = removeItem.parentNode;
+                // 삭제하기
+                parentNode.removeChild(removeItem);                      // 나중에 react 가 다 해줄거라 안해도 되지만... 그래도 기본적인 내용은 알아둬야한다
+            })
+
+            itemInput.value = "";
+            itemInput.focus();                                           // itemInput 위치로 다시 focus 맞춰짐
+        }
+    }
+
+
+    window.addEventListener("load", event => {
+        // #list li 모두 삭제
+        let cartItems = document.querySelectorAll("#list li");
+        // -> HTMLCollection
+        console.log("items:", cartItems);
+        for (let i = 0; i < cartItems.length; i++) {
+            // 부모로부터 제거
+            let item = cartItems[i];
+            // let parent = document.getElementById("list");
+            let parent = item.parentNode;
+            parent.removeChild(item);                        // 부모로부터 노드 제거
+        }
+
+        // #btn-add에 이벤트 리스너 부착
+        document.getElementById("btn-add")
+                .addEventListener("click", addItem);         // addItem 이라는 함수는 script 바로 밑에서 정의하고 있음 
+
+    });
+</script>
 </html>
