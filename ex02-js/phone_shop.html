@@ -94,6 +94,8 @@
         // 하단의 .sub-image 클릭하면 이미지 주소를 main-image
         // title 속성 -> main-image, h2 태그로 복사
         let products = document.getElementsByClassName("sub-image");
+
+        // HTMLCollection
         for (let i = 0; i < products.length; i++) {
             // 개별 프로덕트
             let product = products[i];
@@ -103,10 +105,10 @@
             product.addEventListener("click", (event) => {
                 // 이벤트 발생 객체
                 let obj = event.target;
-                
+
                 // #main-image 찾기
                 let mainImage = document.getElementById("main-image");
-                mainImage.setAttribute("title", 
+                mainImage.setAttribute("title",
                     obj.getAttribute("title")
                 );
                 mainImage.setAttribute("src",
@@ -122,9 +124,16 @@
             });
 
         }
+        // input#keyword의 내용이 변하면 -> button#btn-search의 value 속성으로 복사
+        document.getElementById("keyword")
+            .addEventListener("keyup", (event) => {
+                console.log(event);
+
+                let btn = document.querySelector("#btn-search");            // 어렵다 !!
+                btn.innerText = event.target.value + ":검색";
+            })
 
     });
-
 </script>
 
 </html>
