@@ -75,7 +75,56 @@
         }
 
     }
-    testAttribute();
+    // testAttribute();
+
+
+    // #main-image 클릭하면 이벤트 정보를 콘솔에 출력
+    document.getElementById("main-image").onclick = function (event) {
+        // 이벤트리스너 콜백 함수에 전달된 첫번째 인자 -> 이벤트 정보
+        console.log(event);
+        console.log(typeof event);
+        console.log("이벤트 발생 객체:", event.target);
+
+        alert(event.target.title);
+
+    }
+
+    // 초기화 코드 : 페이지가 모두 로드 되었을 때, 초기화 이벤트 발생
+    window.addEventListener("load", function (event) {
+        // 하단의 .sub-image 클릭하면 이미지 주소를 main-image
+        // title 속성 -> main-image, h2 태그로 복사
+        let products = document.getElementsByClassName("sub-image");
+        for (let i = 0; i < products.length; i++) {
+            // 개별 프로덕트
+            let product = products[i];
+            console.log(product);
+
+            // 이벤트 부착
+            product.addEventListener("click", (event) => {
+                // 이벤트 발생 객체
+                let obj = event.target;
+                
+                // #main-image 찾기
+                let mainImage = document.getElementById("main-image");
+                mainImage.setAttribute("title", 
+                    obj.getAttribute("title")
+                );
+                mainImage.setAttribute("src",
+                    obj.getAttribute("src")
+                )
+
+                // title 속성 -> h2 
+                let h2 = document.querySelector("#product-info h2")         // 중요 !!
+                h2.innerText = obj.getAttribute("title");
+
+                // .innerText -> 콘텐츠 변경 (text)
+                // .innerHTML -> 콘텐츠 변경 (HTML)
+            });
+
+        }
+
+    });
+
 </script>
 
 </html>
