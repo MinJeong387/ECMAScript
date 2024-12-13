@@ -15,4 +15,6 @@ function logicA() {
     }, 2000);
     console.log("end logicA");
 }
-logicA();
+// logicA();
+// 비동기 처리를 수행하되 흐름을 동기방식처럼 처리할 필요가 있다
+// -> Promise
