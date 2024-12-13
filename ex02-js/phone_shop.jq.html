@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iPhones</title>
+    <!-- jQuery CDN -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script> -->
+    <!-- jQuery Local-->
+    <script src="./scripts/jquery/jquery.dev.js"></script>
+
+    <style>
+        #product-info img.selected {
+            width: 225px;
+            height: 265px;
+            float: left;
+            border: 1px solid lightslategrey;
+            margin: 5px;
+        }
+
+        #product-list li {
+            list-style-type: none;
+            border: 1px solid lightslategrey;
+            margin: 5px;
+            float: left;
+        }
+
+        #product-list li img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="product-info">
+        <img id="main-image" src="images/iphone-xs.jpeg" class="selected" title="iPhones XS">
+        <h2>iPhone Xs</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.</p>
+        <h3>Products</h3>
+        <ul id="product-list">
+            <li><img class="sub-image" src="images/iphone-xs.jpeg" title="iPhone XS"></li>
+            <li><img class="sub-image" src="images/iphone-xr.jpeg" title="iPhone XR"></li>
+            <li><img class="sub-image" src="images/iphone8.jpeg" title="iPhone 8"></li>
+            <li><img class="sub-image" src="images/ipad-mini.jpeg" title="iPad Mini"></li>
+        </ul>
+        <input type="text" id="keyword" /><button id="btn-search">검색</button>
+    </div>
+</body>
+<script>
+    function testAttributeJQ() {
+        // #main-image를 가져와서 
+        let obj = $("#main-image");                     // Collection 반환
+        console.log("#main-image:", obj);
+
+        // 모든 속성을 출력
+        // jQuery 포장된 객체에 접근
+        console.log(obj[0].getAttributeNames());
+
+        // title 속성을 접두어 "선택상품:" 붙여서 -> 다시 설정
+        let title = obj.attr("title");
+        obj.attr("title", "선택상품: " + title);         // obj의 title 속성 값을 "선택상품:" + title 으로 변경
+
+        // .sub-image -> title 속성 변경
+        let subs = $(".sub-image");
+        // Loop 수행
+        for (let i = 0; i < subs.length; i++) {
+            // console.log(`sub${i} -> ${subs[i]}`);      (잠시 보기위함)
+            $(subs[i]).attr("title", "선택상품: " + $(subs[i]).attr("title"));
+        }
+    }
+    // testAttributeJQ();
+
+</script>
+
+</html>
