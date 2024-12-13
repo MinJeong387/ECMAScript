@@ -78,6 +78,39 @@
     }
     // testAttributeJQ();
 
+    // #main-image를 클릭하면 이벤트 정보 콘솔에 출력
+    $("#main-image").click(function (event) {           // jQuery에서는 사용자가 발생시키는 이벤트를 핸들링(처리)하는 메서드를 지원
+        console.log(event);                             // event 정보
+        alert(event.target.title);
+    })
+
+    // 페이지 초기화
+    // window의 load 이벤트와 동일, 페이지 초기화 작업
+    $(document).ready(() => {
+        // 하단의 .sub-image들의 클릭 이벤트 부착
+        let subs = $(".sub-image");
+        // 요소가 여러개여도 루프를 돌리지 않아도 된다.
+        subs.on("click", (event) => {
+            // 이벤트 발생 객체에서
+            let obj = $(event.target);                  // 이벤트 발생 객체를 jquery로 포장
+
+            // src 속성, title 속성을 받아와서 -> #main-image으로 이전
+            let mainImage = $("#main-image");
+            mainImage.attr({
+                src: obj.attr("src"),
+                title: obj.attr("title")
+            });
+
+            // src 속성, title 속성을 -> #product-info h2로 이전
+            let h2 = $("#product-info h2");
+            h2.text(obj.attr("title"));
+
+        });
+
+
+    });
+
+
 </script>
 
 </html>
