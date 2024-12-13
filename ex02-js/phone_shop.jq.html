@@ -78,11 +78,17 @@
     }
     // testAttributeJQ();
 
+
+
+
     // #main-image를 클릭하면 이벤트 정보 콘솔에 출력
     $("#main-image").click(function (event) {           // jQuery에서는 사용자가 발생시키는 이벤트를 핸들링(처리)하는 메서드를 지원
         console.log(event);                             // event 정보
         alert(event.target.title);
     })
+
+
+
 
     // 페이지 초기화
     // window의 load 이벤트와 동일, 페이지 초기화 작업
@@ -101,10 +107,19 @@
                 title: obj.attr("title")
             });
 
+
+
             // src 속성, title 속성을 -> #product-info h2로 이전
             let h2 = $("#product-info h2");
             h2.text(obj.attr("title"));
+        });
 
+        // input#keyword의 내용이 변하면 -> button#btn-search의 value 속성으로 복사
+        $("#keyword").on("keyup", event => {
+            let input = $(event.target);               // 이벤트 발생 객체
+
+            let btn = $("#btn-search");
+            btn.text(input.val() + ":검색");
         });
 
 

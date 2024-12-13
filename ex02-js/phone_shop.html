@@ -77,6 +77,8 @@
     // testAttribute();
 
 
+
+
     // #main-image 클릭하면 이벤트 정보를 콘솔에 출력
     document.getElementById("main-image").onclick = function (event) {
         // 이벤트리스너 콜백 함수에 전달된 첫번째 인자 -> 이벤트 정보
@@ -88,6 +90,8 @@
 
     }
 
+
+
     // 초기화 코드 : 페이지가 모두 로드 되었을 때, 초기화 이벤트 발생
     window.addEventListener("load", function (event) {
         // 하단의 .sub-image 클릭하면 이미지 주소를 main-image
@@ -98,7 +102,7 @@
         for (let i = 0; i < products.length; i++) {
             // 개별 프로덕트
             let product = products[i];
-            console.log(product);
+            // console.log(product);
 
             // 이벤트 부착
             product.addEventListener("click", (event) => {
