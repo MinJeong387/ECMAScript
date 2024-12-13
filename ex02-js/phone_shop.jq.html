@@ -58,11 +58,11 @@
     function testAttributeJQ() {
         // #main-image를 가져와서 
         let obj = $("#main-image");                     // Collection 반환
-        console.log("#main-image:", obj);
+        // console.log("#main-image:", obj);
 
         // 모든 속성을 출력
         // jQuery 포장된 객체에 접근
-        console.log(obj[0].getAttributeNames());
+        // console.log(obj[0].getAttributeNames());
 
         // title 속성을 접두어 "선택상품:" 붙여서 -> 다시 설정
         let title = obj.attr("title");
@@ -72,7 +72,7 @@
         let subs = $(".sub-image");
         // Loop 수행
         for (let i = 0; i < subs.length; i++) {
-            // console.log(`sub${i} -> ${subs[i]}`);      (잠시 보기위함)
+            // console.log(`sub${i} -> ${subs[i]}`); 
             $(subs[i]).attr("title", "선택상품: " + $(subs[i]).attr("title"));
         }
     }

@@ -52,28 +52,27 @@
     function testAttribute() {
         // #main-image를 찾아서 속성들을 확인
         let obj = document.getElementById("main-image");
-        console.log("#main-image:", obj);
+        // console.log("#main-image:", obj);
 
         // obj가 어떤 속성들을 가지고 있는가?
-        console.log(obj.getAttributeNames());
+        // console.log(obj.getAttributeNames());
 
         // title 속성을 받아와서 확인 (F12 관리자 화면에서)
         let title = obj.getAttribute("title");
-        console.log("title:" + title);
+        // console.log("title:" + title);
 
         // title 속성을 변경 -> title 속성에 집어넣는다
         obj.setAttribute("title", "제품사진 : " + title);
 
         // 하단의 .sub-image들의 title 속성도 변경해 봅니다.
         let subs = document.getElementsByClassName("sub-image");
-        console.log(".sub-image:", subs);
-        console.log(subs.__proto__);            // HTMLCollection
-        // -> 직접 접근 불가, loop 필요
+        // console.log(".sub-image:", subs);
+        // console.log(subs.__proto__);            // HTMLCollection
 
+        // -> 직접 접근 불가, loop 필요
         for (let i = 0; i < subs.length; i++) {
             subs[i].setAttribute("title", "제품사진 : " + subs[i].getAttribute("title"));
         }
-
     }
     // testAttribute();
 
