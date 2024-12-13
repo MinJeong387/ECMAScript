@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <!-- jQuery Local-->
     <script src="./scripts/jquery/jquery.dev.js"></script>
 </head>
+
 <body>
     <button id="btnCallSnippet">HTML 조각 불러오기</button>
     <button id="btnCallMovies">영화 목록 불러오기</button>
@@ -20,15 +22,38 @@
     <table id="list" border="1" width="640">
 
     </table>
-    
+
 </body>
 <script>
-    $(document).ready(event =>{
+    $(document).ready(event => {
         // #btnCallSnippet에 click 이벤트 핸드러 부착
         $("#btnCallSnippet").on("click", event => {
             alert("코드 조각을 불러옵니다.");
 
             // ajax로 코드 조각 불러오기
+            $.ajax({
+                url: "snippet.html",            // URL
+                type: "GET",                    // 요청방식
+                // data:                           // 전송할 데이터
+                dataType: "text",               // 응답으로 받을 데이터의 형식
+                success: function (response) {
+                    // 요청 성공했을 때의 콜백
+                    // response : 서버가 보내준 데이터
+                    console.log(response);
+                    // #info에 콘텐츠로 추가
+                    $("#info").html(response);
+                },
+                error: function (request, status, error) {
+                    // request: 요청 정보
+                    // status : 응답 상태 (200->OK)
+                    // error  : 에러 정보
+                    console.log("STATUS:", status);
+                    console.error("ERROR:", error);
+                    console.error("REQUEST:", request);
+                }
+
+
+            });
         })
 
     });
