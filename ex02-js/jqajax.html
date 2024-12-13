@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery Local-->
+    <script src="./scripts/jquery/jquery.dev.js"></script>
+</head>
+<body>
+    <button id="btnCallSnippet">HTML 조각 불러오기</button>
+    <button id="btnCallMovies">영화 목록 불러오기</button>
+
+
+
+    <!-- #btnCallSnippet으로 받아온 HTML 조각을 추가할 div-->
+    <div id="info"></div>
+
+    <!-- #btnCallMovies로 받아온 json데이터로 요소를 만들어서 추가-->
+    <table id="list" border="1" width="640">
+
+    </table>
+    
+</body>
+<script>
+    $(document).ready(event =>{
+        // #btnCallSnippet에 click 이벤트 핸드러 부착
+        $("#btnCallSnippet").on("click", event => {
+            alert("코드 조각을 불러옵니다.");
+
+            // ajax로 코드 조각 불러오기
+        })
+
+    });
+</script>
+
+</html>

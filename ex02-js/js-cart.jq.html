@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <title>JS Cart</title>
+    <style>
+        div {
+            margin: 5px;
+            border: 1px dotted red;
+        }
+
+        #list li {
+            height: 30px;
+        }
+    </style>
+    <!-- jQuery Local-->
+    <script src="./scripts/jquery/jquery.dev.js"></script>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Shopping List</h1>
+    </div>
+    <div id="cart-list">
+        <ul id="list">
+            <li>무</li>
+            <li>배추</li>
+            <li>쪽파</li>
+            <li>고춧가루</li>
+        </ul>
+    </div>
+    <div id="cart-input">
+        <input id="item"><button id="btn-add">추가</button>
+    </div>
+    <div id="footer">
+        &copy;Bit Academy
+    </div>
+</body>
+
+<script>
+    function addItem(event) {
+        // input#item의 value를 확인해서 trim -> length > 0 이면 -> 추가
+        let itemInput = $("#item");
+        let item = itemInput.val();         // value 속성
+
+        if (item.trim().length > 0) {
+            // #list를 찾음 (부모)
+            let container = $("#list");
+            // li 생성
+            // 새로운 노드의 생성 $("<태그명>") + 콘텐츠 세팅
+            let itemNode = $("<li>").text(item);
+
+            // div#toolbar 생성
+            let toolbar = $("<div>").css("display", "inline");
+
+            // button#delBtn 생성
+            let delBtn = $("<button>").text("삭제").css("float", "right");
+
+
+
+            // delBtn -> toolbar에 추가
+            toolbar.append(delBtn);
+            // toolbar -> li에 추가
+            itemNode.append(toolbar);
+            // li -> #list에 추가
+            container.append(itemNode);
+
+
+            itemInput.val("");
+            itemInput.focus();
+
+            // delBtn에 click 이벤트 리스너 부착
+            delBtn.on("click", event => {
+                // 삭제할 객체
+                let removeItem = $(event.target.parentNode.parentNode);
+                removeItem.remove();
+
+            })
+
+        }
+    }
+
+
+
+    // 초기화
+    $(document).ready(event => {
+        // 아이템 삭제
+        // #list li => 모두 삭제
+        let cartItems = $("#list li");
+        cartItems.each((index, item) => {
+            console.log("카트 아이템: ", index, "->", item);
+            item.remove();
+            console.log(item, "이 삭제되었습니다.");
+        })
+
+        // #btn-add에 이벤트 리스너 부착
+        $("#btn-add").on("click", addItem);
+    });
+
+
+
+</script>
+
+</html>
