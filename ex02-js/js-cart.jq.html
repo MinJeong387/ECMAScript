@@ -18,6 +18,7 @@
     <script src="./scripts/jquery/jquery.dev.js"></script>
 </head>
 
+
 <body>
     <div id="header">
         <h1>Shopping List</h1>
@@ -42,11 +43,12 @@
     function addItem(event) {
         // input#item의 value를 확인해서 trim -> length > 0 이면 -> 추가
         let itemInput = $("#item");
-        let item = itemInput.val();         // value 속성
+        let item = itemInput.val();         // value 속성 (jQuery의 .val()메서드는 값 가져올 때 자동으로 양쪽 공백 제거함)
 
         if (item.trim().length > 0) {
             // #list를 찾음 (부모)
             let container = $("#list");
+            
             // li 생성
             // 새로운 노드의 생성 $("<태그명>") + 콘텐츠 세팅
             let itemNode = $("<li>").text(item);
@@ -75,13 +77,9 @@
                 // 삭제할 객체
                 let removeItem = $(event.target.parentNode.parentNode);
                 removeItem.remove();
-
             })
-
         }
     }
-
-
 
     // 초기화
     $(document).ready(event => {
@@ -97,9 +95,5 @@
         // #btn-add에 이벤트 리스너 부착
         $("#btn-add").on("click", addItem);
     });
-
-
-
 </script>
-
 </html>
