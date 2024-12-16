@@ -24,8 +24,10 @@
     <h2>Set Cookie</h2>
     <label for="cookieUsername">Username:</label>
     <input type="text" id="cookieUsername" placeholder="e.g., Alice">
+
     <label for="cookieRole">Role:</label>
     <input type="text" id="cookieRole" placeholder="e.g., Editor">
+
     <button id="setCookie">Set Cookie</button>
 
     <h2>Read Cookie</h2>
@@ -61,21 +63,49 @@
 
         // 쿠키 삭제 함수
         function eraseCookie(name) {
-            document.cookie = name + '=; Max-Age=-99999999;';
+            document.cookie = name + '=; Max-Age=-99999999; path=/';
         }
 
         // Set Cookie 버튼 클릭 이벤트
         document.getElementById('setCookie').addEventListener('click', function () {
+            // #cookieUsername의 value 값을 불러오기
+            // #cookieRole의 value 값을 불러오기
+            const username = document.getElementById("cookieUsername").value;
+            const role = document.getElementById("cookieRole").value;
 
+            // 두 값을 쿠키에 설정
+            if (username) {
+                setCookie('username', username, 7);
+            }
+            if (role) {
+                setCookie('role', role, 7);
+            }
+            alert('쿠키가 저장되었습니다.');
         });
 
         // Read Cookie 버튼 클릭 이벤트
         document.getElementById('readCookie').addEventListener('click', function () {
+            // 쿠키 username, role을 읽어와서 
+            // #cookieResult div 에 출력
+            const username = getCookie('username');
+            const role = getCookie('role');
+
+            if (username || role) {
+                document.getElementById("cookieResult").innerText = `Username: ${username}, Role: ${role}`;
+            } else {
+                document.getElementById("cookieResult").innerText = "쿠키를 찾을 수 없습니다.";
+            }
 
         });
 
         // Delete Cookie 버튼 클릭 이벤트
         document.getElementById('deleteCookie').addEventListener('click', function () {
+            // 쿠키 무효화
+            // #cookieResult div를 콘텐츠 비우기
+            eraseCookie("username");
+            eraseCookie("role");
+            alert("쿠키가 삭제되었습니다.");
+            document.getElementById("cookieResult").innerText = '';
 
         });
     </script>
