@@ -7,6 +7,11 @@
     <title>Document</title>
     <!-- jQuery Local-->
     <script src="./scripts/jquery/jquery.dev.js"></script>
+    <style>
+        .poster {
+            width: 100px;
+        }
+    </style>
 </head>
 
 
@@ -20,6 +25,7 @@
     <div id="info"></div>
 
     <!-- #btnCallMovies로 받아온 json데이터로 요소를 만들어서 추가-->
+    <h2>Pixar Movies</h2>
     <table id="list" border="1" width="640">
 
     </table>
@@ -33,6 +39,7 @@
             alert("코드 조각을 불러옵니다.");
 
             // ajax로 코드 조각 불러오기
+            /*
             $.ajax({
                 url: "snippet.html",                        // URL
                 type: "GET",                                // 요청방식
@@ -54,7 +61,67 @@
                     console.error("REQUEST:", request);
                 }
             });
+            */
+
+            // ES6 에서부터터
+            // - fetch : 통신 함수
+            // - axios : 좀 더 고급 통신 기능을 활용하고 싶을 때
+            fetch("snippet.html")
+                .then(response => {
+                    console.log(response);
+                    return response.text();                 // 응답 텍스트를 받아옴
+                })
+                .then(data => {
+                    document.getElementById("info").innerHTML = data;
+                })
+                .catch(error => {
+                    console.error("ERROR: ", error);
+                });
         })
+
+        $("#btnCallMovies").on("click", event => {
+            // API 서버 접속, 영화 목록 받아오기
+            fetch("http://localhost:3000/movies")
+                .then(response => {
+                    // console.log(response.json());
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    let movies = data.movies;           //  -> Array
+
+                    // 무비 정보 순회
+                    for (let i = 0; i < movies.length; i++) {
+                        let movie = movies[i];
+                        console.log("개별영화: ", movie);
+
+                        let title = movie.title;
+                        let director = movie.director;
+                        let movieId = movie.id;
+                        let poster = "http://localhost:3000/images/" + movie.image
+
+                        // 새 노드 생성
+                        let tr = $("<tr>");
+
+                        // 내부 콘텐츠 추가
+                        let content = `
+                        <td><img class="poster" src="${poster}"></td>
+                        <td><h3>${title}</h3></td>
+                        <td>${director}</td>
+                        `;
+
+                        tr.html(content);
+
+                        // 테이블에 추가
+                        $("#list").append(tr);
+                    }
+                })
+                .catch(error => {
+                    console.error("ERROR:", eroor);
+                })
+
+        });
     });
 </script>
+
 </html>
