@@ -71,6 +71,7 @@
                 }
             });
 
+        // #readLocalStorage click 이벤트
         document.getElementById("readLocalStorage")
             .addEventListener("click", event => {
                 // theme, fontSize를 LocalStorage로 부터 읽어와서
@@ -88,6 +89,7 @@
                 }
             });
 
+        // #deleteLocalStorage click 이벤트
         document.getElementById("deleteLocalStorage")
             .addEventListener("click", event => {
                 localStorage.removeItem("theme");
@@ -97,7 +99,53 @@
             });
 
 
+
+
         // SessionStorage Handlers - User Information
+
+        // #saveSessionStorage click 이벤트
+        document.getElementById("saveSessionStorage")
+            .addEventListener("click", event => {
+                const username = document.getElementById("username").value;
+                const email = document.getElementById("email").value;
+
+                if (username && email) {
+                    // 저장
+                    sessionStorage.setItem("username", username);
+                    sessionStorage.setItem("email", email);
+                    document.getElementById("sessionStorageResult")
+                        .innerText = `저장되었습니다: username: ${username}, email: ${email}`;
+                } else {
+                    // 경고
+                    alert("사용자 이름과 이메일을 입력해 주세요");
+                }
+            }
+            );
+
+        // #readSessionStorage click 이벤트
+        document.getElementById("readSessionStorage")
+            .addEventListener("click", event => {
+                const username = sessionStorage.getItem("username");
+                const email = sessionStorage.getItem("email");
+
+                if (username && email) {
+                    document.getElementById("sessionStorageResult")
+                        .innerText = `불러왔습니다: username: ${username}, email: ${email}`;
+                } else {
+                    document.getElementById("sessionStorageResult")
+                        .innerText = "사용자 정보를 불러오지 못했습니다.";
+                }
+            });
+
+        // #deleteSessionStorage click 이벤트
+        document.getElementById("deleteSessionStorage")
+            .addEventListener("click", event => {
+                sessionStorage.clear();     // 비우기
+                document.getElementById("sessionStorageResult")
+                    .innerText = "사용자 정보를 삭제했습니다.";
+            });
+
+
 
 
     </script>
