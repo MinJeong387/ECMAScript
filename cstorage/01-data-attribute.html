@@ -50,8 +50,26 @@
         <button class="info-btn">Show Info</button>
     </div>
 
-    <script>
 
+    <script>
+        // .info-btn에 모두 click 이벤트 부착
+        document.querySelectorAll(".info-btn").forEach(button => {
+            // click event
+            button.addEventListener("click", event => {
+                // 부모 div 찾기
+                const userDiv = event.target.parentElement;
+                console.log(userDiv);
+
+                // data- 속성 읽기
+                const userId = userDiv.getAttribute("data-user-id");
+                const username = userDiv.getAttribute("data-username");
+                const role = userDiv.getAttribute("data-role");
+
+                // 정보 표시
+                alert("User Id " + userId + ", Username: " + username + ", Role: " + role);
+
+            });
+        });
     </script>
 </body>
 
