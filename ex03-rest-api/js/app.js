@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const apiUrl = "http://localhost:3000/todos"; // API Endpoint URL
+    const apiUrl = "http://localhost:8088/api/todos"; // API Endpoint URL
     const todoList = document.getElementById("todo-list"); // TODO list element: ul#todo-list
     const newTodoInput = document.getElementById("new-todo"); // New TODO input element: input#new-todo
     const addTodoButton = document.getElementById("add-todo"); // Add TODO button element: button#add-todo
