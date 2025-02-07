@@ -9,6 +9,7 @@ LABEL description="이것은 nginx로 정적 웹 배포 연습을 위한 이미�
 COPY . /usr/share/nginx/html
 
 # 외부로 노출할 포트
+# -p 옵션
 EXPOSE 80
 
 # 컨테이너 시작시 수행할 명령어
