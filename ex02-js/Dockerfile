@@ -16,3 +16,11 @@ EXPOSE 80
 ENTRYPOINT ["nginx"]
 CMD ["-g", "daemon off;"]
 # ENTRYPOINT + CMD 조합
+
+
+
+# volume 마운트
+
+# network 연결
+
+# 실행 커맨드
