@@ -19,8 +19,7 @@ CMD ["-g", "daemon off;"]
 
 
 
+# 위에꺼 보고 
 # volume 마운트
-
 # network 연결
-
 # 실행 커맨드
